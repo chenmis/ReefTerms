@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>מדריך מידות לטבעות</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -142,19 +142,18 @@
     const slider = document.getElementById('sizeSlider');
 
     function mmToPx(mm) {
-        // עדכון המקדם ל-5.8 לגודל מדויק יותר
-        return mm * 4.25;
+        // התאמה לפי צפיפות הפיקסלים של המכשיר
+        const devicePixelRatio = window.devicePixelRatio || 1;
+        return (mm * 4.25) / devicePixelRatio;
     }
 
     function updateCircle(value) {
-      const diameter = value / 10; // Convert to mm
+      const diameter = value / 10;
       const physicalSize = mmToPx(diameter);
       
-      // הגדרת הגודל והמיקום
       circle.style.width = `${physicalSize}px`;
       circle.style.height = `${physicalSize}px`;
       
-      // מיקום מדויק במרכז
       circle.style.left = '50%';
       circle.style.top = '50%';
       circle.style.transform = 'translate(-50%, -50%)';
