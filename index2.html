@@ -142,9 +142,8 @@
     const slider = document.getElementById('sizeSlider');
 
     function mmToPx(mm) {
-        // התאמה לפי צפיפות הפיקסלים של המכשיר
-        const devicePixelRatio = window.devicePixelRatio || 1;
-        return (mm * 4.25) / devicePixelRatio;
+        // משתמשים במקדם קבוע ללא תלות ב-devicePixelRatio
+        return mm * 4.25;
     }
 
     function updateCircle(value) {
